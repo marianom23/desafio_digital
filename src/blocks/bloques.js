@@ -60,8 +60,9 @@ sumar['domToMutation'] = function (xmlElement) {
 
 const preguntar = Blockly.Blocks['preguntar'] = {
   init: function() {
-    this.appendDummyInput()
-        .appendField("pedir valor");
+    this.appendValueInput("pregunta")
+        .setCheck(["String", "Text"])
+        .appendField("pedir valor con pregunta:");
     this.setOutput(true, ["String", "Number", "Math_Number"]);
     this.setColour(160);
     this.setTooltip("");

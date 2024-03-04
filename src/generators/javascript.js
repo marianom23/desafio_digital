@@ -22,6 +22,7 @@ forBlock['saludar'] = function (block, generator) {
   const textEl = document.createElement('p');
   textEl.innerText = 'Hola, ' + nombre + '!';
   outputDiv.appendChild(textEl);
+  alert('Hola, ' + nombre + '!');
 }`
   );
   const code = `${saludarFunction}(${name});\n`;
@@ -39,20 +40,22 @@ forBlock['sumar'] = function (block, generator) {
   const textEl = document.createElement('p');
   textEl.innerText = "El resultado de la suma es: " + resultado;
   outputDiv.appendChild(textEl);
+  alert("El resultado de la suma es: " + resultado);
 }`
   );
   const code = `${sumarFunction}(${code1}, ${code2});\n`;
   return code;
 };
 
-
 forBlock['preguntar'] = function (block, generator) {
+  const pregunta = generator.valueToCode(block, 'pregunta', generator.ORDER_ATOMIC) || '\'Ingrese un valor:\'';
   const preguntaFunction = generator.provideFunction_(
       'preguntaFunction',
-      `function ${generator.FUNCTION_NAME_PLACEHOLDER_}() {
-  return prompt('Ingrese un valor:');
+      `function ${generator.FUNCTION_NAME_PLACEHOLDER_}(pregunta) {
+  const respuesta = prompt(pregunta);
+  return respuesta;
 }`
   );
-  const code = `${preguntaFunction}()`;
+  const code = `${preguntaFunction}(${pregunta})`;
   return [code, generator.ORDER_ATOMIC];
 };
