@@ -60,15 +60,19 @@ sumar['domToMutation'] = function (xmlElement) {
 
 const preguntar = Blockly.Blocks['preguntar'] = {
   init: function() {
-    this.appendValueInput("pregunta")
-        .setCheck(["String", "Text"])
+    this.appendDummyInput()
         .appendField("pedir valor con pregunta:");
     this.setOutput(true, ["String", "Number", "Math_Number"]);
     this.setColour(160);
     this.setTooltip("");
     this.setHelpUrl("");
+
+    // Agregar un campo de texto con valor predeterminado dentro del bloque de pregunta
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldTextInput("Texto predeterminado"), "pregunta");
   }
 };
+
 
 
 

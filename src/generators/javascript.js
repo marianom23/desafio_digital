@@ -48,7 +48,7 @@ forBlock['sumar'] = function (block, generator) {
 };
 
 forBlock['preguntar'] = function (block, generator) {
-  const pregunta = generator.valueToCode(block, 'pregunta', generator.ORDER_ATOMIC) || '\'Ingrese un valor:\'';
+  const pregunta = block.getFieldValue('pregunta') || 'Ingrese un valor:';
   const preguntaFunction = generator.provideFunction_(
       'preguntaFunction',
       `function ${generator.FUNCTION_NAME_PLACEHOLDER_}(pregunta) {
@@ -56,6 +56,6 @@ forBlock['preguntar'] = function (block, generator) {
   return respuesta;
 }`
   );
-  const code = `${preguntaFunction}(${pregunta})`;
+  const code = `${preguntaFunction}('${pregunta}')`;
   return [code, generator.ORDER_ATOMIC];
 };
