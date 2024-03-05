@@ -69,7 +69,7 @@ const preguntar = Blockly.Blocks['preguntar'] = {
 
     // Agregar un campo de texto con valor predeterminado dentro del bloque de pregunta
     this.appendDummyInput()
-        .appendField(new Blockly.FieldTextInput("Texto predeterminado"), "pregunta");
+        .appendField(new Blockly.FieldTextInput("Ingrese texto"), "pregunta");
   }
 };
 
